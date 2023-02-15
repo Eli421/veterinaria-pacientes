@@ -1,7 +1,9 @@
-import Pacientes from "./Pacientes"
+import Paciente from "./Paciente"
 
 
-const ListadoPacientes = () => {
+const ListadoPacientes = ({pacientes}) => {
+
+console.log(pacientes)
 
     return (
         <div className="md:w-1/2 md:h-screen lg:w-3/5 md:overflow-y-scroll">
@@ -11,12 +13,14 @@ const ListadoPacientes = () => {
                 Administra tus {''}
                 <span className="text-indigo-600 font-bold">Pacientes y citas</span>
             </p>
-            
-            <Pacientes />
-            <Pacientes />
-            <Pacientes />
-            <Pacientes />
-            <Pacientes />
+
+            {pacientes.map( (paciente, index) => (
+                <Paciente 
+                    key={index}
+                    paciente={paciente}
+                />
+            ))}
+
         
         </div> 
     )

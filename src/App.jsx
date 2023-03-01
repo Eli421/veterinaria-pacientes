@@ -5,8 +5,9 @@ import Formulario from "./components/Formulario"
 import ListadoPacientes from "./components/ListadoPacientes"
 
 function App() {
-
-  const [pacientes, setPacientes] = useState( () => JSON.parse(localStorage.getItem('pacientes')) ?? []);
+  const [pacientes, setPacientes] = useState(
+    () => JSON.parse(localStorage.getItem("pacientes")) ?? []
+  );
   const [paciente, setPaciente] = useState({});
 
   // useEffect(() => {
@@ -17,36 +18,36 @@ function App() {
   //   obtenerLS();
   // }, [])
 
-
   useEffect(() => {
-    localStorage.setItem('pacientes', JSON.stringify(pacientes));
-  }, [pacientes])
-
+    localStorage.setItem("pacientes", JSON.stringify(pacientes));
+  }, [pacientes]);
 
   const eliminarPaciente = (id) => {
-      const pacientesActualizados = pacientes.filter(paciente => paciente.id !== id);
+    const pacientesActualizados = pacientes.filter(
+      (paciente) => paciente.id !== id
+    );
 
-      setPacientes(pacientesActualizados)
-  }
+    setPacientes(pacientesActualizados);
+  };
 
   return (
     <div className="container mx-auto mt-20">
       <Header />
       <div className="mt-12 md:flex">
-        <Formulario 
-          pacientes = {pacientes}
-          setPacientes = {setPacientes}
-          paciente = {paciente}
-          setPaciente = {setPaciente}
+        <Formulario
+          pacientes={pacientes}
+          setPacientes={setPacientes}
+          paciente={paciente}
+          setPaciente={setPaciente}
         />
-        <ListadoPacientes 
-          pacientes = {pacientes}
-          setPaciente = {setPaciente}
-          eliminarPaciente = {eliminarPaciente}
+        <ListadoPacientes
+          pacientes={pacientes}
+          setPaciente={setPaciente}
+          eliminarPaciente={eliminarPaciente}
         />
       </div>
     </div>
-  )
+  );
 }  //se imprime en pantalla a menos que lo ponga entre {} lo va a tratar como JS
 //condicionales solo con ternarios
 
